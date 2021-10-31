@@ -31,6 +31,7 @@ jobs:
       PGUSER: nile
       PGPASSWORD: ""
       RAILS_ENV: test
+      COVERAGE: true
     steps:
       - checkout
       - ruby/install-deps

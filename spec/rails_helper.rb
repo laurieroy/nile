@@ -1,4 +1,25 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
+require 'simplecov'
+SimpleCov.start 'rails' do
+  # Disambiguates individual test runs with CIRCLE_NODE_INDEX
+  command_name "Job #{ENV['CIRCLE_NODE_INDEX']}" if ENV['CIRCLE_NODE_INDEX']
+  
+  # If running test in CI, generate just .json result, then we can join them later
+  # else, generate the full HTML report
+  if ENV['CI']
+    formatter SimpleCov::Formatter::SimpleFormatter
+  else
+    formatter SimpleCov::Formatter::MultiFormatter.new(
+      [
+        SimpleCov::Formatter::SimpleFormatter,
+        SimpleCov::Formatter::HTMLFormatter
+      ]
+    )
+  end
+
+  track_files "**/*.rb"
+end
+
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
