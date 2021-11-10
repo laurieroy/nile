@@ -28,3 +28,6 @@
 
 # Ignore coverage files
 coverage
+
+# Ignore env
+*.env
