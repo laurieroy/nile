@@ -29,5 +29,5 @@
 # Ignore coverage files
 coverage
 
-# Ignore env
+# Ignore .env
 *.env
