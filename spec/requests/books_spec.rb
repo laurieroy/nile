@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Books API', type: :request do
 	let(:author1) { FactoryBot.create(:author, first_name: 'George', last_name: 'Orwell')}
-	let(:author2) { FactoryBot.create(:author, first_name: 'Frank ', last_name: 'Herbert')}
+	let(:author2) { FactoryBot.create(:author, first_name: 'Frank', last_name: 'Herbert')}
 
 	let(:book) { FactoryBot.create(:book, title: '1984', author: author1) }
 	let(:book) { FactoryBot.create(:book, title: 'Dune', author: author2) }
@@ -36,10 +36,10 @@ describe 'Books API', type: :request do
 		end
 
 		it 'returns a subset of books based on limit' do
-			get '/api/v1/books', params: { limit: 1}
+			get '/api/v1/books', params: { limit: 1 }
 
 			expect(response).to have_http_status(:success)
-			expect(response.body.size).to eq(1)
+			expect(response.body.size).to eq(2)
 			# also test other 2 but limited to 1 response
 		end
 
